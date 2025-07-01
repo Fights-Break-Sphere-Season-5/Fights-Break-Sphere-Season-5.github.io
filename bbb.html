@@ -76,8 +76,8 @@
   <!-- ปุ่มเลือกวิดีโอสำรอง จะโชว์หลังกดโฆษณา -->
   <div class="btn-group" id="btnGroup">
     <button data-src="https://gdplayer.vip/MKEXH3IAZJ7Y">สำรอง 1</button>
-    <button data-src="https://gdplayer.vip/ALT146_2">สำรอง 2</button>
-    <button data-src="https://gdplayer.vip/ALT146_3">สำรอง 3</button>
+    <button data-src="https://gdplayer.vip/IBHV73LGMRIY">สำรอง 2</button>
+    <button data-src="https://gdplayer.vip/G7KUFH8U559O">สำรอง 3</button>
   </div>
 
   <!-- วิดีโอ iframe ซ่อนก่อน กดโฆษณาแล้วแสดง -->
@@ -107,7 +107,6 @@
 </script>
 
 <script>
-  // รอคลิกปุ่มโฆษณาก่อนโหลดวิดีโอและปุ่มสำรอง
   const adButton = document.getElementById('adButton');
   const btnGroup = document.getElementById('btnGroup');
   const videoWrapper = document.getElementById('videoWrapper');
@@ -117,4 +116,25 @@
     // เปิดลิงก์โฆษณาในแท็บใหม่
     window.open('https://otieu.com/4/9179557', '_blank');
 
-    //
+    // ซ่อนปุ่มโฆษณา
+    adButton.style.display = 'none';
+
+    // แสดงปุ่มสำรองและ iframe
+    btnGroup.style.display = 'block';
+    videoWrapper.style.display = 'block';
+
+    // โหลดวิดีโอสำรอง 1 เป็นค่าเริ่มต้น
+    videoPlayer.src = btnGroup.querySelector('button').getAttribute('data-src');
+  });
+
+  // เปลี่ยนวิดีโอเมื่อกดปุ่มสำรอง
+  btnGroup.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', () => {
+      const src = button.getAttribute('data-src');
+      videoPlayer.src = src;
+    });
+  });
+</script>
+
+</body>
+</html>
