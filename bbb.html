@@ -15,21 +15,14 @@
     nav a:hover { color: #ffccbc; }
     main { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
     .video-title { text-align: center; font-size: 1.5rem; color: #ffa07a; margin-bottom: 20px; font-weight: 700; }
-    .btn-group { text-align: center; margin-bottom: 20px; display: none; }
-    .btn-group button {
-      background-color: #ff3d00; color: white; border: none; padding: 10px 20px;
-      margin: 0 8px; font-weight: bold; font-size: 1rem; border-radius: 6px; cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .btn-group button:hover { background-color: #ff7043; }
     .video-wrapper {
       position: relative;
       width: 100%;
       max-width: 1000px;
       aspect-ratio: 16 / 9;
-      margin: 0 auto;
+      margin: 0 auto 20px;
       background: #000;
-      display: none;
+      cursor: pointer;
     }
     .video-wrapper iframe {
       position: absolute;
@@ -37,20 +30,25 @@
       width: 100%;
       height: 100%;
       border: none;
+      pointer-events: none; /* คลิกผ่าน div */
     }
-    .adzone { text-align: center; margin: 40px 0; }
-    .adzone button {
-      background: #ff3d00;
+    .btn-group {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .btn-group button {
+      background-color: #ff3d00;
       color: white;
-      padding: 20px 40px;
       border: none;
-      font-size: 1.5rem;
+      padding: 10px 20px;
+      margin: 0 8px;
       font-weight: bold;
-      border-radius: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    .adzone button:hover { background-color: #ff7043; }
+    .btn-group button:hover { background-color: #ff7043; }
     footer { text-align: center; padding: 20px; background-color: #1f1f1f; color: #ccc; font-size: 0.9rem; margin-top: 40px; }
     #histats_wrapper { width: 100%; text-align: center; margin-top: 30px; }
     #histatsC { display: inline-block !important; float: none !important; }
@@ -68,21 +66,14 @@
 <main>
   <div class="video-title">Black Clover แบล็คโคลเวอร์ ตอนที่ 146 พากย์ไทย</div>
 
-  <!-- ปุ่มโฆษณา บังคับคลิกก่อนดูวิดีโอ -->
-  <div class="adzone">
-    <button id="adButton">💥 คลิกที่นี่เพื่อสนับสนุนก่อนดูวิดีโอ 💥</button>
+  <div class="video-wrapper" id="videoWrapper" title="คลิกเพื่อดูต่อ">
+    <iframe id="videoPlayer" src="https://gdplayer.vip/MKEXH3IAZJ7Y" allow="autoplay" allowfullscreen title="Black Clover 146"></iframe>
   </div>
 
-  <!-- ปุ่มเลือกวิดีโอสำรอง จะโชว์หลังกดโฆษณา -->
   <div class="btn-group" id="btnGroup">
     <button data-src="https://gdplayer.vip/MKEXH3IAZJ7Y">สำรอง 1</button>
     <button data-src="https://gdplayer.vip/IBHV73LGMRIY">สำรอง 2</button>
     <button data-src="https://gdplayer.vip/G7KUFH8U559O">สำรอง 3</button>
-  </div>
-
-  <!-- วิดีโอ iframe ซ่อนก่อน กดโฆษณาแล้วแสดง -->
-  <div class="video-wrapper" id="videoWrapper">
-    <iframe id="videoPlayer" src="" allow="autoplay" allowfullscreen title="Black Clover 146"></iframe>
   </div>
 </main>
 
@@ -90,7 +81,6 @@
   © 2025 Anime 888 — ดูอนิเมะออนไลน์ พากย์ไทย ซับไทย ครบทุกแนว
 </footer>
 
-<!-- Histats -->
 <div id="histats_wrapper">
   <div id="histats_counter"></div>
 </div>
@@ -107,24 +97,13 @@
 </script>
 
 <script>
-  const adButton = document.getElementById('adButton');
-  const btnGroup = document.getElementById('btnGroup');
   const videoWrapper = document.getElementById('videoWrapper');
   const videoPlayer = document.getElementById('videoPlayer');
+  const btnGroup = document.getElementById('btnGroup');
 
-  adButton.addEventListener('click', () => {
-    // เปิดลิงก์โฆษณาในแท็บใหม่
+  // เปิดโฆษณาในแท็บใหม่เมื่อคลิกวิดีโอ
+  videoWrapper.addEventListener('click', () => {
     window.open('https://otieu.com/4/9179557', '_blank');
-
-    // ซ่อนปุ่มโฆษณา
-    adButton.style.display = 'none';
-
-    // แสดงปุ่มสำรองและ iframe
-    btnGroup.style.display = 'block';
-    videoWrapper.style.display = 'block';
-
-    // โหลดวิดีโอสำรอง 1 เป็นค่าเริ่มต้น
-    videoPlayer.src = btnGroup.querySelector('button').getAttribute('data-src');
   });
 
   // เปลี่ยนวิดีโอเมื่อกดปุ่มสำรอง
