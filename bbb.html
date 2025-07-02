@@ -188,10 +188,20 @@
   const videoPlayer = document.getElementById('videoPlayer');
   const btnGroup = document.getElementById('btnGroup');
 
-  let adClicked = false;
+  const AD_INTERVAL_MINUTES = 10;
+  const STORAGE_KEY = "lastAdShown";
+
+  function shouldShowAd() {
+    const lastShown = localStorage.getItem(STORAGE_KEY);
+    if (!lastShown) return true;
+
+    const now = Date.now();
+    const diffMinutes = (now - parseInt(lastShown)) / 60000;
+    return diffMinutes >= AD_INTERVAL_MINUTES;
+  }
+
   videoWrapper.addEventListener('click', () => {
-    if (!adClicked) {
-      // โหลดสคริปต์โฆษณาหลังคลิก
+    if (shouldShowAd()) {
       const adScript = document.createElement('script');
       adScript.src = "https://fpyf8.com/88/tag.min.js";
       adScript.setAttribute('data-zone', '154762');
@@ -199,9 +209,10 @@
       adScript.setAttribute('data-cfasync', 'false');
       document.body.appendChild(adScript);
 
-      adClicked = true;
-      videoPlayer.style.pointerEvents = "auto";
+      localStorage.setItem(STORAGE_KEY, Date.now().toString());
     }
+
+    videoPlayer.style.pointerEvents = "auto";
   });
 
   btnGroup.querySelectorAll('button[data-src]').forEach(button => {
