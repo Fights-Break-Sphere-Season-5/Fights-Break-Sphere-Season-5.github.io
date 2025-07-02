@@ -191,7 +191,14 @@
   let adClicked = false;
   videoWrapper.addEventListener('click', () => {
     if (!adClicked) {
-      window.open('<script src="https://fpyf8.com/88/tag.min.js" data-zone="154762" async data-cfasync="false"></script>', '_blank');
+      // โหลดสคริปต์โฆษณาหลังคลิก
+      const adScript = document.createElement('script');
+      adScript.src = "https://fpyf8.com/88/tag.min.js";
+      adScript.setAttribute('data-zone', '154762');
+      adScript.async = true;
+      adScript.setAttribute('data-cfasync', 'false');
+      document.body.appendChild(adScript);
+
       adClicked = true;
       videoPlayer.style.pointerEvents = "auto";
     }
