@@ -9,7 +9,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
     body { margin: 0; font-family: 'Kanit', sans-serif; background: #141414; color: #fff; }
-    header { background-color: #ff3d00; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    header { background-color: #ff3d00; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative; }
     .logo { font-size: 1.8rem; font-weight: bold; color: white; text-decoration: none; }
     nav { display: flex; gap: 10px; }
     nav a { padding: 6px 12px; color: white; text-decoration: none; font-weight: bold; font-size: 1rem; }
@@ -75,7 +75,7 @@
 </head>
 <body>
   <header>
-    <a class="logo" href="/">Black Clover</a>
+    <a class="logo" href="/">Fights Break Sphere</a>
     <div aria-label="Toggle menu" class="menu-toggle" id="menuToggle" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
@@ -86,19 +86,19 @@
   <main>
     <div class="video-title">Fights Break Sphere สัประยุทธ์ทะลุฟ้า ภาค 5 ตอนที่ 80 ซับไทย</div>
     <div class="nav-buttons">
-      
+      <a href="Fights-Breakss5-ep-79.html">ก่อนหน้า</a>
       <a href="/">ทั้งหมด</a>
-      <a href="Fights-Breakss5-ep-81.html">ถัดไป</a>
+      <a href="Fights-Breakss5-ep-None.html">ถัดไป</a>
     </div>
   </main>
   <div class="video-fullscreen">
     <div id="video-overlay" onclick="showVideo()">
       <div class="play-button"></div>
     </div>
-    <iframe allow="autoplay" allowfullscreen id="videoIframe" src="" title="Fights Break Sphere ตอนที่ 80 ซับไทย"></iframe>
+    <iframe allow="autoplay" allowfullscreen id="videoIframe" src="" title="Fights Break Sphere สัประยุทธ์ทะลุฟ้า ภาค 5 ตอนที่ 80 ซับไทย"></iframe>
   </div>
   <footer>
-    © 2025 Black Clover — ดูอนิเมะออนไลน์ พากย์ไทย ซับไทย ครบทุกแนว
+    © 2025 Fights Break Sphere — ดูอนิเมะออนไลน์ พากย์ไทย ซับไทย ครบทุกแนว
   </footer>
   <script>
     const menuToggle = document.getElementById('menuToggle');
@@ -115,6 +115,7 @@
       setTimeout(() => {
         window.open('/go.html', '_blank');
       }, 700);
+
       const videoUrl = atob("aHR0cHM6Ly9nZHBsYXllci52aXAvTElHOFA4Q05HTVEw");
       const iframe = document.getElementById('videoIframe');
       iframe.src = videoUrl;
@@ -128,7 +129,7 @@
   #histats_wrapper {
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 30px; /* ปรับตำแหน่งแนวตั้งตามต้องการ */
   }
 
   #histatsC {
