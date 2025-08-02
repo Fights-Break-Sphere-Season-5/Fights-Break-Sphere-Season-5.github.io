@@ -44,7 +44,7 @@
 
     function showVideo() {
       setTimeout(() => window.open('/go.html', '_blank'), 700);
-      const encodedSrc = "aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xZ0dsOGdkUDlmbDJvWkpJV1FSU0toNFpnb3RxaDQzNF8vcHJldmlldw==";
+      const encodedSrc = "aHR0cHM6Ly9zdHJlYW1pbmcuZGlzay55YW5kZXgubmV0L2hscy9VMkZzZEdWa1gxLWRYZ3dlY2ZLNjZSYUQ0UjVaRHpxUjNnczBMZElyN0t2MXk1TFRiUVZoai1neGgyTWw5SGV5cWRaZ1V5YWxhem52WDZUVWFCdGRXcHhDa1JZZmdFdDhXVkNxUVNwTGx1ZzVHempNUUNGU3lIazl5dHBaMjdEUjVPakFaZmVERVhvVEtDbVl5RGU0b1hMU21FVW5RY0JTaHdRZl8wMUFreENCbVZuTW1VdFdQMlNEcDZ1SEt2QlhJSTVPT0NxRU9hRm1lNVpPZTJjcUtzbVZrNFYyalRldWdQZ3Y5cEQ1bW1Hc21ZSkhpWkkwaFlVcHJjWVdkQmpCZ3FLMkUzQ0dSaXhmX3ROd25FOHpKZXNuNHVXYndLdkdmOUJZcEJJTUN1VlJfbnFmQVlWSXFWRUp4VVNWZWxlTElxYThqeTlBeXdkb29iSGZQQ2hvX0FZWlBsU3FfeHNxTE1KSGlobnRZb2cvNjNiNzQ0Mzg4NGM3OC8zOTNiZGI0MjQ1Mzc4NzAwZTFjY2NhMTViN2VmNzY3Y2YxNzg4MWNlYTllM2E1ZDlkNDZhNTM1ODQ0NDY5ZjAyLzcyMHAvcGxheWxpc3QubTN1OA==";
       const videoUrl = atob(encodedSrc);
       const iframe = document.getElementById('videoIframe');
       iframe.src = videoUrl;
