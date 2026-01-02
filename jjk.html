@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Series BK</title>
+
+<style>
+body{
+  margin:0;
+  background:#0b0b0b;
+  color:#fff;
+  font-family:sans-serif;
+}
+.video-box{
+  width:100%;
+  height:220px;
+  background:#000;
+}
+iframe{
+  width:100%;
+  height:100%;
+}
+.container{
+  padding:10px;
+}
+.episodes{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
+.ep{
+  background:#2c2c2c;
+  padding:10px 0;
+  text-align:center;
+  border-radius:6px;
+  cursor:pointer;
+}
+.ep.lock{
+  background:#1a1a1a;
+  color:#777;
+}
+.ep.lock::after{
+  content:" 🔒";
+}
+</style>
+</head>
+
+<body>
+
+<!-- วิดีโอ -->
+<div class="video-box">
+  <iframe id="player"
+    src="https://videohost.com/embed/EP1"
+    frameborder="0"
+    allowfullscreen
+    allow="autoplay">
+  </iframe>
+</div>
+
+<div class="container">
+  <h3>Series BK</h3>
+  <small>ตอนที่ 10 เป็นต้นไป – คุณแกล็อค</small>
+
+  <div class="episodes">
+    <div class="ep" onclick="playEp(1)">1</div>
+    <div class="ep" onclick="playEp(2)">2</div>
+    <div class="ep" onclick="playEp(3)">3</div>
+    <div class="ep" onclick="playEp(4)">4</div>
+    <div class="ep" onclick="playEp(5)">5</div>
+    <div class="ep" onclick="playEp(6)">6</div>
+    <div class="ep" onclick="playEp(7)">7</div>
+    <div class="ep" onclick="playEp(8)">8</div>
+    <div class="ep" onclick="playEp(9)">9</div>
+
+    <div class="ep lock" onclick="playEp(10)">10</div>
+    <div class="ep lock" onclick="playEp(11)">11</div>
+    <div class="ep lock" onclick="playEp(12)">12</div>
+  </div>
+</div>
+
+<script>
+const links = {
+  1:"https://videohost.com/embed/EP1",
+  2:"https://videohost.com/embed/EP2",
+  3:"https://videohost.com/embed/EP3",
+  4:"https://videohost.com/embed/EP4",
+  5:"https://videohost.com/embed/EP5",
+  6:"https://videohost.com/embed/EP6",
+  7:"https://videohost.com/embed/EP7",
+  8:"https://videohost.com/embed/EP8",
+  9:"https://videohost.com/embed/EP9"
+};
+
+function playEp(ep){
+  if(ep >= 10){
+    alert("ตอนนี้พิเศษโดยคุณแกล็อค");
+    return;
+  }
+  document.getElementById("player").src = links[ep];
+}
+</script>
+
+</body>
+</html>
