@@ -6,23 +6,41 @@
 <title>Series BK</title>
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
   background:#0b0b0b;
   color:#fff;
   font-family:sans-serif;
 }
+.header{
+  background:#111;
+  padding:10px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+}
 .video-box{
   width:100%;
-  height:220px;
+  height:240px;
   background:#000;
 }
-iframe{
+.video-box video{
   width:100%;
   height:100%;
+  background:#000;
 }
 .container{
-  padding:10px;
+  padding:12px;
+}
+.title{
+  font-size:16px;
+  margin-bottom:4px;
+}
+.sub{
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:10px;
 }
 .episodes{
   display:grid;
@@ -33,8 +51,15 @@ iframe{
   background:#2c2c2c;
   padding:10px 0;
   text-align:center;
-  border-radius:6px;
+  border-radius:8px;
   cursor:pointer;
+  font-size:14px;
+}
+.ep:hover{background:#3a3a3a}
+.ep.active{
+  background:#ff9800;
+  color:#000;
+  font-weight:bold;
 }
 .ep.lock{
   background:#1a1a1a;
@@ -43,61 +68,87 @@ iframe{
 .ep.lock::after{
   content:" 🔒";
 }
+.footer{
+  margin-top:15px;
+  font-size:12px;
+  color:#666;
+  text-align:center;
+}
+@media(max-width:600px){
+  .episodes{grid-template-columns:repeat(4,1fr)}
+}
 </style>
 </head>
 
 <body>
 
+<div class="header">Series BK</div>
+
 <!-- วิดีโอ -->
 <div class="video-box">
-  <iframe id="player"
-    src="https://videohost.com/embed/EP1"
-    frameborder="0"
-    allowfullscreen
-    allow="autoplay">
-  </iframe>
+  <video
+    id="player"
+    controls
+    playsinline
+    preload="metadata"
+    poster=""
+  >
+    <source src="https://pixeldrain.com/api/file/Yg4yxZL1" type="video/mp4">
+    เบราว์เซอร์ไม่รองรับวิดีโอ
+  </video>
 </div>
 
 <div class="container">
-  <h3>Series BK</h3>
-  <small>ตอนที่ 10 เป็นต้นไป – คุณแกล็อค</small>
+  <div class="title">Series BK ตอนทั้งหมด</div>
+  <div class="sub">ตอนที่ 10 เป็นต้นไป – พิเศษโดยคุณแกล็อค</div>
 
+  <!-- ตอน -->
   <div class="episodes">
-    <div class="ep" onclick="playEp(1)">1</div>
-    <div class="ep" onclick="playEp(2)">2</div>
-    <div class="ep" onclick="playEp(3)">3</div>
-    <div class="ep" onclick="playEp(4)">4</div>
-    <div class="ep" onclick="playEp(5)">5</div>
-    <div class="ep" onclick="playEp(6)">6</div>
-    <div class="ep" onclick="playEp(7)">7</div>
-    <div class="ep" onclick="playEp(8)">8</div>
-    <div class="ep" onclick="playEp(9)">9</div>
+    <div class="ep active" onclick="playEp(1,this)">1</div>
+    <div class="ep" onclick="playEp(2,this)">2</div>
+    <div class="ep" onclick="playEp(3,this)">3</div>
+    <div class="ep" onclick="playEp(4,this)">4</div>
+    <div class="ep" onclick="playEp(5,this)">5</div>
+    <div class="ep" onclick="playEp(6,this)">6</div>
+    <div class="ep" onclick="playEp(7,this)">7</div>
+    <div class="ep" onclick="playEp(8,this)">8</div>
+    <div class="ep" onclick="playEp(9,this)">9</div>
 
     <div class="ep lock" onclick="playEp(10)">10</div>
     <div class="ep lock" onclick="playEp(11)">11</div>
     <div class="ep lock" onclick="playEp(12)">12</div>
   </div>
+
+  <div class="footer">© Series BK</div>
 </div>
 
 <script>
 const links = {
-  1:"//sendvid.com/embed/jbpxp5vf",
-  2:"https://pixeldrain.com/api/file/Yg4yxZL1",
-  3:"https://videohost.com/embed/EP3",
-  4:"https://videohost.com/embed/EP4",
-  5:"https://videohost.com/embed/EP5",
-  6:"https://videohost.com/embed/EP6",
-  7:"https://videohost.com/embed/EP7",
-  8:"https://videohost.com/embed/EP8",
-  9:"https://videohost.com/embed/EP9"
+  1: "https://pixeldrain.com/api/file/Yg4yxZL1",
+  2: "https://pixeldrain.com/api/file/XXXXXXXX",
+  3: "https://pixeldrain.com/api/file/YYYYYYYY",
+  4: "https://pixeldrain.com/api/file/ZZZZZZZZ",
+  5: "https://pixeldrain.com/api/file/AAAAAAA",
+  6: "https://pixeldrain.com/api/file/BBBBBBB",
+  7: "https://pixeldrain.com/api/file/CCCCCCC",
+  8: "https://pixeldrain.com/api/file/DDDDDDD",
+  9: "https://pixeldrain.com/api/file/EEEEEEE"
 };
 
-function playEp(ep){
+function playEp(ep, el){
   if(ep >= 10){
     alert("ตอนนี้พิเศษโดยคุณแกล็อค");
     return;
   }
-  document.getElementById("player").src = links[ep];
+
+  const video = document.getElementById("player");
+  video.src = links[ep];
+  video.play();
+
+  document.querySelectorAll(".ep").forEach(b=>{
+    b.classList.remove("active");
+  });
+  if(el) el.classList.add("active");
 }
 </script>
 
